@@ -1,0 +1,47 @@
+@startuml
+title Manage Beneficiaries
+
+
+User -> App : Opens App
+App -> User : Displays Login Screen
+User -> App : Enters Credentials
+App -> User : Validates Credentials
+activate App
+App -> User : Authenticates User
+App -> User : Grants Access
+deactivate App
+App -> User : Displays Homepage
+alt Manages Beneficiaries
+  User -> App : Selects Beneficiaries Menu
+  opt Add Beneficiary
+    User -> App : Selects Add Beneficiary
+    App -> User : Displays Add Beneficiary Form
+    User -> App : Enters Beneficiary Name & IBAN (or cancels)
+    App -> User : Validates Information
+    alt Valid Beneficiary
+      App -> User : Adds Beneficiary
+      App -> User : Updates Beneficiary List
+    else Invalid Beneficiary
+      App -> User : Displays Error Message
+
+    end alt
+  end opt
+  opt Delete Beneficiary
+    User -> App : Selects Beneficiary for Deletion
+    App -> User : Displays Confirmation Popup
+    User -> App : Confirms (or cancels) Deletion
+    alt Confirmed Deletion
+      App -> User : Deletes Beneficiary
+      App -> User : Updates Beneficiary List
+    else Canceled Deletion
+      App -> User : Does nothing
+    end alt
+  end opt
+  User -> App : (Chooses to) View Account Details/Perform Other Actions
+else No Selection
+  User -> App : (Chooses to) View Account Details/Perform Other Actions
+end
+
+User -> App : Closes App
+
+@enduml
