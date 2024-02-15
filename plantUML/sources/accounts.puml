@@ -1,0 +1,31 @@
+@startuml
+title Personal Bank Account - Display Accounts
+User -> App : Opens App
+App -> User : Displays Login Screen
+User -> App : Enters Credentials
+App -> User : Validates Credentials
+activate App
+App -> User : Authenticates User
+App -> User : Grants Access
+deactivate App
+App -> User : Displays Homepage
+
+alt Selects Accounts Menu
+  User -> App : Selects Accounts Menu
+  App -> User : Displays Accounts List
+  opt Display Account Details
+    User -> App : Selects Account Details
+    App -> User : Displays Account Details
+  opt Download RIB
+    User -> App : Requests RIB Download
+    App -> User : Downloads RIB
+  end opt
+  end opt
+
+else
+  User -> App : (Chooses to) Do Other Actions
+end
+
+User -> App : Closes App
+
+@enduml
