@@ -1,0 +1,24 @@
+@startuml
+title Money Transfer Usage Diagram
+User -> App : Opens App
+App -> User : Displays Homepage
+opt Selects Transfer Menu
+  User -> App : Selects Transfer Menu
+  App -> User : Displays Transfer Form
+  User -> App : Selects Debit Account
+  User -> App : Enters Amount
+  User -> App : Selects Beneficiary
+  User -> App : (Optional) Adds Transfer Name
+  User -> App : Submits Transfer
+  App -> User : Processes Transfer
+  alt Successful Transfer
+    App -> User : Displays Confirmation Message
+  else Failed Transfer
+    App -> User : Displays Error Message
+  end alt
+else Stays on Homepage
+end
+
+User -> App : Closes App
+
+@enduml
