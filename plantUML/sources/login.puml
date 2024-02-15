@@ -1,0 +1,24 @@
+@startuml
+title App Login Usage Diagram
+
+User -> App : Opens App
+App -> User : Displays Login Screen
+User -> App : Enters Email
+User -> App : Enters Password
+
+alt Successful Login
+    App -> User : Validates Credentials
+    activate App
+    App -> User : Authenticates User
+    App -> User : Grants Access
+    deactivate App
+    User -> App : Accesses App Homepage
+else Failed Login
+    App -> User : Invalid Credentials
+    App -> User : Displays Error Message
+    User -> App : (Chooses to) Retry Email/Password
+end
+
+User -> App : Closes App
+
+@enduml
