@@ -1,0 +1,34 @@
+@startuml
+title Settings Menu Usage Diagram
+
+
+User -> App : Opens App
+App -> User : Displays Homepage
+
+alt Opens Settings Menu
+  opt Clicks Account Icon/Menu (Top Right)
+    User -> App : Clicks Account Icon/Menu (Top Right)
+  else Clicks Settings Menu (Bottom Right)
+    User -> App : Clicks Settings Menu (Bottom Right)
+  end opt
+  App -> User : Displays Settings Menu
+  User -> App : (Selects option)
+  opt Selects Log Out
+    User -> App : Selects Log Out
+    App -> User : Displays Confirmation Popup
+    User -> App : Confirms Log Out
+    App -> User : Logs Out User
+  else Selects Switch Language
+    App -> User : Displays Language Options
+    User -> App : Selects Language
+    App -> User : Updates Language
+  else Selects Light/Dark Mode
+    App -> User : Toggles Light/Dark Mode
+  end opt
+  User -> App : (Closes Settings Menu)
+else Stays on Homepage
+end
+
+User -> App : Closes App
+
+@enduml
